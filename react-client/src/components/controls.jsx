@@ -7,6 +7,7 @@ const Controls = (props) => (
    	<button>Show/hide High Scores</button>
       <button onClick={props.playGame}>ゲームをスタート</button>
       <button onClick={props.changeName}>名前を変える</button>
+      <button>クレジット</button>
   </div>
 )
 

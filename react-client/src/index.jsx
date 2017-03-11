@@ -36,6 +36,10 @@ class App extends React.Component {
     this.setState({playerName: name});
   }
 
+  toggleScoreBoard() {
+
+  }
+
   addToCharCount () {
     this.setState({charCount: this.state.charCount + 1});
     $('input').val('');
@@ -50,11 +54,22 @@ class App extends React.Component {
 
   }
 
+  setupGame() {
+
+  }
+
 
   runTimer() {
-      setTimeout(function(){
-        this.setState({timeLeft: this.state.timeLeft - 1});
-      }, 1000);        
+    var time = 66;
+
+    var ticker = setInterval(function(){
+      console.log(time);
+      if (time === 0) {
+        clearInterval(ticker);
+      } else {
+        time--;
+      }
+    }, 1000);
   }
 
   componentDidMount() {
@@ -83,7 +98,6 @@ class App extends React.Component {
         <h3>よこそ, {this.state.playerName}! レージしよう!</h3>
         <p>{this.state.timeLeft}秒が残ります</p>
         <p>{this.state.charCount}キャラをタイプしました</p>
-
       </header>
 
       <div id="main">
@@ -94,8 +108,6 @@ class App extends React.Component {
         <Controls playGame={this.playGame} changeName={this.changeName}/>
         <ScoreBoard scores={this.state.scores}/>
       </div>
-      
-
     </div>)
   }
 
