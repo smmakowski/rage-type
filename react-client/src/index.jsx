@@ -39,22 +39,23 @@ class App extends React.Component {
   }
 
   playGame() {
+    $('p').show();
     this.setState({charCount: 0});
+    this.setState({timeLeft: 66});
+
+    this.runTimer();
+
   }
 
 
   runTimer() {
-
-      if (this.state.timeLeft > 0) {
+      setTimeout(function(){
         this.setState({timeLeft: this.state.timeLeft - 1});
-      } else if (this.state.timeLeft === 0) {
-        this.setState({timeleft: 66});
-      }
-
+      }, 1000);        
   }
 
   componentDidMount() {
-
+  $('p').hide();
   this.changeName();
     
   // get highscores from db
@@ -77,13 +78,13 @@ class App extends React.Component {
       <header>
         <h1>レージ(●o≧д≦o)タイプ!</h1>
         <h3>よこそ, {this.state.playerName}! レージしよう!</h3>
-        <p>You have {this.state.timeLeft} seconds left!</p>
-        <p>You have typed {this.state.charCount} characters</p>
+        <p>{this.state.timeLeft}秒が残ります</p>
+        <p>{this.state.charCount}キャラをタイプしました</p>
 
       </header>
 
       <div id="main">
-        <Terminal addChars={this.addToCharCount} items ={this.state.items}/>
+        <Terminal addChars={this.addToCharCount} items={this.state.items}/>
       </div>
 
       <div id="side">
