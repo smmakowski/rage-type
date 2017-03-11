@@ -5,7 +5,7 @@ const ScoreBoard = (props) => (
   <div id="board">
     <h4>ベスト＊スコア</h4>
     <span>{props.scores.length}の楽しんだゲムがあります</span>
-    {props.scores.map(score => <Score score={score}/>)}
+    {props.scores.slice(0,9).map(score => <Score score={score}/>)}
   </div>
 )
 

@@ -1,4 +1,6 @@
-
+header {
+	width: 100%;
+}
 h1 {
 	text-decoration: underline;
 }
@@ -7,16 +9,19 @@ h1 {
 	margin: 5px;
 }
 
-header {
-	text-align: center;
+#terminalbody {
+	width: 425px;
+	height: 255px;
+	word-break: break-all;
+	word-wrap: break-word;
+	overflow: scroll;
 }
 
 #side {
 	width: 450px;
-	height: 350px;
 	border: 2px black solid;
-	display: inline-block;
 	margin: 5px;
+	display: inline-block;
 }
 
 #main {
@@ -24,8 +29,8 @@ header {
 	width: 450px;
 	height: 350px;
 	border: 2px black solid;
-	display: inline-block;
 	margin: 5px;
+	display: inline-block;
 }
 
 #board {

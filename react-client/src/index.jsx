@@ -14,14 +14,26 @@ class App extends React.Component {
       {name: 'レージさん', points: 1000000}, {name: 'レージさん', points: 1000000},
       {name: 'レージさん', points: 1000000}],
       playerName: '',
-      timeLeft: 66,
+      timeLeft: 44,
       charCount: 0
     }
 
     this.changeName = this.changeName.bind(this);
-    this.runTimer = this.runTimer.bind(this);
+    this.runGame = this.runGame.bind(this);
+    this.setupGame = this.setupGame.bind(this);
     this.addToCharCount = this.addToCharCount.bind(this);
     this.playGame = this.playGame.bind(this);
+    this.endGame = this.endGame.bind(this);
+  }
+
+  // Control Functions
+  showCredits () {
+    alert('A Hack Reactor MVP project by Stephen Makowski.' +
+      'Technologies used: React, Express, MongoDB, and Node' +
+      '(...and some jQuery. I hope it isn\'t an anti-pattern ^-^) \n \n' +
+      'Big thanks to Everyone in HRSF72, expecially those who put up' +
+      'with me during pair programming! Y\'all rule! Hope you enjoy' +
+      'the game!')
   }
 
   changeName () {
@@ -37,40 +49,65 @@ class App extends React.Component {
   }
 
   toggleScoreBoard() {
-
+    $('#board').toggle();
   }
 
+  // Terminal display related functions
   addToCharCount () {
     this.setState({charCount: this.state.charCount + 1});
+
+    var line = window.lines[Math.floor(Math.random() * window.lines.length)];
+    line = line + ' \n '
+    var $termBody = $('#terminalbody');
+    $termBody.append(line);
+    $termBody.scrollTop = $termBody.scrollHeight;
     $('input').val('');
   }
 
+  clearTerminal () {
+    $('#terminalbody').empty();
+  }
+
+  //Game Flow
   playGame() {
-    $('p').show();
-    this.setState({charCount: 0});
-    this.setState({timeLeft: 66});
-
-    this.runTimer();
-
+    this.setupGame();
+    this.runGame(this.endGame);
   }
 
   setupGame() {
-
+    $('p').show();
+    this.setState({charCount: 0});
+    this.setState({timeLeft: 44});
   }
 
-
-  runTimer() {
-    var time = 66;
+  runGame(cb) {
+    var time = 10;
 
     var ticker = setInterval(function(){
+
       console.log(time);
       if (time === 0) {
         clearInterval(ticker);
+        cb();
       } else {
         time--;
       }
     }, 1000);
   }
+
+  endGame() {
+    alert('Congratz ' + this.state.playerName + ', you typed ' + this.state.charCount + ' characters');
+
+    //send the data to the data base
+
+    //grab data and rerender high score board
+
+    //set characters typed back to 0;
+
+    this.setState({charCount: 0})
+    $('p').hide();
+  }
+
 
   componentDidMount() {
   $('p').hide();
@@ -105,12 +142,11 @@ class App extends React.Component {
       </div>
 
       <div id="side">
-        <Controls playGame={this.playGame} changeName={this.changeName}/>
+        <Controls showCredits={this.showCredits} playGame={this.playGame} changeName={this.changeName} toggleScoreBoard={this.toggleScoreBoard} clearTerminal={this.clearTerminal}/>
         <ScoreBoard scores={this.state.scores}/>
       </div>
     </div>)
   }
-
 
 }
 
