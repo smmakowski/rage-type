@@ -10,10 +10,15 @@ class App extends React.Component {
     super(props);
     this.state = { 
       items: [],
-      playerName: ''
+      playerName: '',
+      timeLeft: 66,
+      charCount: 0
     }
 
     this.changeName = this.changeName.bind(this);
+    this.runTimer = this.runTimer.bind(this);
+    this.addToCharCount = this.addToCharCount.bind(this);
+    this.playGame = this.playGame.bind(this);
   }
 
   changeName () {
@@ -28,13 +33,33 @@ class App extends React.Component {
     this.setState({playerName: name});
   }
 
+  addToCharCount () {
+    this.setState({charCount: this.state.charCount + 1});
+    $('input').val('');
+  }
+
+  playGame() {
+    this.setState({charCount: 0});
+  }
+
+
+  runTimer() {
+
+      if (this.state.timeLeft > 0) {
+        this.setState({timeLeft: this.state.timeLeft - 1});
+      } else if (this.state.timeLeft === 0) {
+        this.setState({timeleft: 66});
+      }
+
+  }
+
   componentDidMount() {
 
   this.changeName();
     
   // get highscores from db
     $.ajax({
-      url: '/items', 
+      url: '/scores', 
       success: (data) => {   
         this.setState({
           items: data
@@ -52,16 +77,18 @@ class App extends React.Component {
       <header>
         <h1>レージ(●o≧д≦o)タイプ!</h1>
         <h3>よこそ, {this.state.playerName}! レージしよう!</h3>
+        <p>You have {this.state.timeLeft} seconds left!</p>
+        <p>You have typed {this.state.charCount} characters</p>
 
       </header>
 
       <div id="main">
-        <Terminal items ={this.state.items}/>
+        <Terminal addChars={this.addToCharCount} items ={this.state.items}/>
       </div>
 
       <div id="side">
+        <Controls playGame={this.playGame} changeName={this.changeName}/>
         <ScoreBoard items={this.state.items}/>
-        <Controls changeName={this.changeName}/>
       </div>
       
 

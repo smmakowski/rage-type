@@ -11,12 +11,12 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-var itemSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
+var scoreSchema = mongoose.Schema({
+  name: String,
+  score: Number
 });
 
-var Item = mongoose.model('Item', itemSchema);
+var Score = mongoose.model('Score', scoreSchema);
 
 var selectAll = function(callback) {
   Item.find({}, function(err, items) {
@@ -27,5 +27,7 @@ var selectAll = function(callback) {
     }
   });
 };
+
+var fluffy = new Kitten({ name: 'fluffy' });
 
 module.exports.selectAll = selectAll;
