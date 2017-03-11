@@ -11,11 +11,17 @@ h4 {
 #terminal {
 	border: 2px black solid;
 	margin: 5px;
+	background-image: url("terminal.png");
+	background-size: cover;
 }
 
+input {
+	width: 415px;
+}
 #terminalbody {
+	margin-top: 20px;
 	width: 425px;
-	height: 255px;
+	height: 295px;
 	word-break: break-all;
 	word-wrap: break-word;
 	overflow: scroll;

@@ -14,7 +14,7 @@ class App extends React.Component {
       {name: 'レージさん', points: 1000000}, {name: 'レージさん', points: 1000000},
       {name: 'レージさん', points: 1000000}],
       playerName: '',
-      timeLeft: 44,
+      timeLeft: 9,
       charCount: 0
     }
 
@@ -75,27 +75,29 @@ class App extends React.Component {
   setupGame() {
     $('p').show();
     this.setState({charCount: 0});
-    this.setState({timeLeft: 44});
+    this.setState({timeLeft: 9});
   }
 
   runGame(cb) {
     var time = 10;
-
-    var ticker = setInterval(function(){
-
+    var runner = function() {
       console.log(time);
-      if (time === 0) {
-        clearInterval(ticker);
-        cb();
-      } else {
-        time--;
-      }
-    }, 1000);
+        if (time === 1) {
+          clearInterval(ticker);
+          cb();
+        } else {
+          time--;
+          this.setState({timeLeft: this.state.timeLeft - 1})
+        }
+    };
+    runner = runner.bind(this);
+
+    var ticker = setInterval(runner, 1000);
   }
 
   endGame() {
     alert('Congratz ' + this.state.playerName + ', you typed ' + this.state.charCount + ' characters');
-
+    alert(this.state.timeLeft);
     //send the data to the data base
 
     //grab data and rerender high score board
@@ -131,6 +133,7 @@ class App extends React.Component {
       <header>
         <h1>レージ(●o≧д≦o)タイプ!</h1>
         <h3>よこそ, {this.state.playerName}! レージしよう!</h3>
+        <p>ゲム中です!　頑張って</p>
         <p>{this.state.timeLeft}秒が残ります</p>
         <p>{this.state.charCount}キャラをタイプしました</p>
       </header>
