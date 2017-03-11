@@ -10,6 +10,9 @@ class App extends React.Component {
     super(props);
     this.state = { 
       items: [],
+      scores:[{name: 'レージさん', points: 1000000}, {name: 'レージさん', points: 1000000},
+      {name: 'レージさん', points: 1000000}, {name: 'レージさん', points: 1000000},
+      {name: 'レージさん', points: 1000000}],
       playerName: '',
       timeLeft: 66,
       charCount: 0
@@ -84,12 +87,12 @@ class App extends React.Component {
       </header>
 
       <div id="main">
-        <Terminal addChars={this.addToCharCount} items={this.state.items}/>
+        <Terminal addChars={this.addToCharCount} />
       </div>
 
       <div id="side">
         <Controls playGame={this.playGame} changeName={this.changeName}/>
-        <ScoreBoard items={this.state.items}/>
+        <ScoreBoard scores={this.state.scores}/>
       </div>
       
 
