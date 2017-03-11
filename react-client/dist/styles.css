@@ -3,20 +3,25 @@ header {
 }
 h1 {
 	text-decoration: underline;
+	margin: 2px;
 }
 
 h4 {
 	margin: 2px;
 }
 #terminal {
-	border: 2px black solid;
+	border: 2px gray solid;
 	margin: 5px;
 	background-image: url("terminal.png");
-	background-size: cover;
+	background-size: 100% 100%
 }
 
 input {
-	width: 415px;
+	width: 400px;
+}
+
+p {
+	margin: 2px;
 }
 #terminalbody {
 	margin-top: 20px;
@@ -31,7 +36,7 @@ input {
 	width: 450px;
 	border: 2px black solid;
 	margin: 5px;
-	display: inline-block;
+
 }
 
 #main {
@@ -40,7 +45,7 @@ input {
 	height: 350px;
 	border: 2px black solid;
 	margin: 5px;
-	display: inline-block;
+
 }
 
 #board {

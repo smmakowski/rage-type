@@ -56,7 +56,7 @@ class App extends React.Component {
   addToCharCount () {
     this.setState({charCount: this.state.charCount + 1});
 
-    var line = lines[Math.floor(Math.random() * window.lines.length)];
+    var line = lines[Math.floor(Math.random() * lines.length)];
     var $termBody = $('#terminalbody');
     $termBody.append(line);
     $('input').val('');
@@ -73,6 +73,7 @@ class App extends React.Component {
   }
 
   setupGame() {
+    $('#board').hide();
     $('p').show();
     this.setState({charCount: 0});
     this.setState({timeLeft: 9});
@@ -97,7 +98,6 @@ class App extends React.Component {
 
   endGame() {
     alert('Congratz ' + this.state.playerName + ', you typed ' + this.state.charCount + ' characters');
-    alert(this.state.timeLeft);
     //send the data to the data base
 
     //grab data and rerender high score board
@@ -106,6 +106,7 @@ class App extends React.Component {
 
     this.setState({charCount: 0})
     $('p').hide();
+    $('#board').show();
   }
 
 
