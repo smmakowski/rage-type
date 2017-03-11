@@ -3,7 +3,7 @@ var lines = [
 	'var str = "Im a string!";',
 	'var obj = {key: value};',
 	'return',
-	'/* Packets? how does that even work? */'
+	'/* Packets? how does that even work? */',
 	'console.log(val);',
 	'var func = function () {',
 	'}',

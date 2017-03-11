@@ -56,11 +56,9 @@ class App extends React.Component {
   addToCharCount () {
     this.setState({charCount: this.state.charCount + 1});
 
-    var line = window.lines[Math.floor(Math.random() * window.lines.length)];
-    line = line + ' \n '
+    var line = lines[Math.floor(Math.random() * window.lines.length)];
     var $termBody = $('#terminalbody');
     $termBody.append(line);
-    $termBody.scrollTop = $termBody.scrollHeight;
     $('input').val('');
   }
 
