@@ -54,12 +54,17 @@ class App extends React.Component {
 
   // Terminal display related functions
   addToCharCount () {
+    var $input = $('input');
     this.setState({charCount: this.state.charCount + 1});
 
     var line = lines[Math.floor(Math.random() * lines.length)];
     var $termBody = $('#terminalbody');
     $termBody.append(line);
-    $('input').val('');
+    
+    if ($input.val().length > 20) {
+      $input.val('');
+    }
+    
   }
 
   clearTerminal () {
