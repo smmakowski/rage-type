@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/scores');
 
 var db = mongoose.connection;
 
@@ -18,8 +18,22 @@ var scoreSchema = mongoose.Schema({
 
 var Score = mongoose.model('Score', scoreSchema);
 
+//add new person
+var addOne = function(data, callback) {
+  console.log(data);
+  var newScore = new Score(data);
+  newScore.save(function(err, newScore) {
+    if (err) {
+      console.log('NOT SAVED IN DB');
+    }
+
+    console.log('SAVED IN DB!');
+  });
+}
+
+//get all people
 var selectAll = function(callback) {
-  Item.find({}, function(err, items) {
+  Score.find({}, function(err, items) {
     if(err) {
       callback(err, null);
     } else {
@@ -28,6 +42,6 @@ var selectAll = function(callback) {
   });
 };
 
-var fluffy = new Kitten({ name: 'fluffy' });
 
 module.exports.selectAll = selectAll;
+module.exports.addOne = addOne;

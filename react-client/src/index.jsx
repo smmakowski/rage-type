@@ -61,7 +61,7 @@ class App extends React.Component {
     var $termBody = $('#terminalbody');
     $termBody.append(line);
     
-    if ($input.val().length > 20) {
+    if ($input.val().length > 50) {
       $input.val('');
     }
     
@@ -85,9 +85,8 @@ class App extends React.Component {
   }
 
   runGame(cb) {
-    var time = 10;
+    var time = 9;
     var runner = function() {
-      console.log(time);
         if (time === 1) {
           clearInterval(ticker);
           cb();
@@ -107,7 +106,18 @@ class App extends React.Component {
 
     //grab data and rerender high score board
 
-    //set characters typed back to 0;
+    $.ajax({
+      method: 'POST',
+      url: '/scores', 
+      data: JSON.stringify({name: this.state.playerName, score: this.state.charCount}),
+      contentType: 'application/json',
+      success: (data) => {  
+      console.log('POSTING...', data);
+      },
+      error: (err) => {
+        console.log('ERR', err);
+      }
+    });
 
     this.setState({charCount: 0})
     $('p').hide();
@@ -123,8 +133,9 @@ class App extends React.Component {
     $.ajax({
       url: '/scores', 
       success: (data) => {   
+      console.log('DATA RECEIVED', data);
         this.setState({
-          items: data
+          scores: data
         })
       },
       error: (err) => {
