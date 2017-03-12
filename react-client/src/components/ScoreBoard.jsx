@@ -3,9 +3,8 @@ import Score from './Score.jsx';
 
 const ScoreBoard = (props) => (
   <div id="board">
-    <h4>ベスト＊スコア</h4>
-    <span>{props.scores.length}の楽しんだゲムがあります</span>
-    {props.scores.slice(0,9).map(score => <Score score={score}/>)}
+    <h4>{props.scores.length}のゲムのベスト10スコア</h4>
+    {props.scores.slice(0,10).map((score, i) => <Score place={i + 1} score={score}/>)}
   </div>
 )
 

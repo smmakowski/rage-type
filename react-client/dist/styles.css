@@ -22,6 +22,10 @@ h3 {
 	margin: 2px;
 }
 
+#entry {
+	text-align: center;
+}
+
 #gamestats {
 	width: 450px;
 	font-weight: bold;

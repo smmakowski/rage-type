@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Score = (props) => (
-  <div>
-    { props.score.name }  |  { props.score.score }
+  <div id="entry">
+    第{props.place}番 | {props.score.name}  |  {props.score.score}ポイント
   </div>
 )
 
