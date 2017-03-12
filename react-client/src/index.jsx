@@ -154,7 +154,7 @@ class App extends React.Component {
   componentDidMount() {
     $('input').hide();
     $('#gamestats').hide();
-    $('#terminalbody').append('こんにちは!楽しみのために\"ゲームをスタート\"のボタンを押してください' +
+    $('#terminalbody').append('こんにちは!楽しみのために\"ゲームをスタート\"のボタンを押してください.' +
       'ボタンを押すと10秒がなく前にINPUTボックスをクリックして早く何もしてタイプをしてください'
     );
     var getter = this.getData;
