@@ -33,7 +33,7 @@ var addOne = function(data, callback) {
 
 //get all people
 var selectAll = function(callback) {
-  Score.find({}, function(err, items) {
+  Score.find({}, null, {sort: {score: -1 }}, function(err, items) {
     if(err) {
       callback(err, null);
     } else {
