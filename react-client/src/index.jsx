@@ -12,7 +12,7 @@ class App extends React.Component {
       items: [],
       scores:[],
       playerName: '',
-      timeLeft: 9,
+      timeLeft: 10,
       charCount: 0
     }
 
@@ -90,8 +90,9 @@ class App extends React.Component {
   }
 
   runGame(cb) {
-    var time = 9;
+    var time = 10;
     var runner = function() {
+        $('#playing').toggle();
         if (time === 1) {
           clearInterval(ticker);
           cb();
@@ -146,15 +147,12 @@ class App extends React.Component {
     });
   }
 
-
   componentDidMount() {
-  $('#gamestats').hide();
-  this.changeName();
-  var getter = this.getData;
-    
- 
-
-    setInterval(getter, 1000);
+    $('#gamestats').hide();
+    this.changeName();
+    var getter = this.getData;
+      
+      setInterval(getter, 1000);
 
   }
 
@@ -171,9 +169,10 @@ class App extends React.Component {
       </div>
 
       <div id="gamestats">
-        <p id="playing">ゲム中です! 頑張って</p>
+        
         <p>{this.state.timeLeft}秒が残ります</p>
         <p>{this.state.charCount} ポイント!</p>
+        <p id="playing">ゲム中です! 頑張って</p>
       </div>
 
       <div id="side">
