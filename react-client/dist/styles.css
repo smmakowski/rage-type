@@ -21,6 +21,18 @@ h4 {
 h3 {
 	margin: 2px;
 }
+
+#gamestats {
+	width: 450px;
+	font-weight: bold;
+	text-align: center;
+	background-color: Cornsilk;
+	border: 2px Black solid;
+}
+
+#playing {
+	color: Red;
+}
 #terminal {
 	border: 2px gray solid;
 	margin: 5px;

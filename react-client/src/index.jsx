@@ -10,9 +10,7 @@ class App extends React.Component {
     super(props);
     this.state = { 
       items: [],
-      scores:[{name: 'レージさん', points: 1000000}, {name: 'レージさん', points: 1000000},
-      {name: 'レージさん', points: 1000000}, {name: 'レージさん', points: 1000000},
-      {name: 'レージさん', points: 1000000}],
+      scores:[],
       playerName: '',
       timeLeft: 9,
       charCount: 0
@@ -57,7 +55,7 @@ class App extends React.Component {
   // Terminal display related functions
   addToCharCount () {
     var $input = $('input');
-    this.setState({charCount: this.state.charCount + 1});
+    this.setState({charCount: this.state.charCount + 5711});
 
     var line = lines[Math.floor(Math.random() * lines.length)];
     var $termBody = $('#terminalbody');
@@ -85,8 +83,8 @@ class App extends React.Component {
   }
 
   setupGame() {
-    $('#board').hide();
-    $('p').show();
+    $('#gamestats').show();
+    $('#side').hide();
     this.setState({charCount: 0});
     this.setState({timeLeft: 9});
   }
@@ -128,8 +126,8 @@ class App extends React.Component {
     });
 
     this.setState({charCount: 0})
-    $('p').hide();
-    $('#board').show();
+    $('#gamestats').hide();
+    $('#side').show();
   }
 
   //Data Retrieval
@@ -150,7 +148,7 @@ class App extends React.Component {
 
 
   componentDidMount() {
-  $('p').hide();
+  $('#gamestats').hide();
   this.changeName();
   var getter = this.getData;
     
@@ -166,13 +164,16 @@ class App extends React.Component {
       <header>
         <h1>レージ(●o≧д≦o)タイプ!</h1>
         <h3>よこそ, {this.state.playerName}! レージしよう!</h3>
-        <p>ゲム中です!　頑張って</p>
-        <p>{this.state.timeLeft}秒が残ります</p>
-        <p>{this.state.charCount}キャラをタイプしました</p>
       </header>
 
       <div id="main">
         <Terminal addChars={this.addToCharCount} />
+      </div>
+
+      <div id="gamestats">
+        <p id="playing">ゲム中です! 頑張って</p>
+        <p>{this.state.timeLeft}秒が残ります</p>
+        <p>{this.state.charCount} ポイント!</p>
       </div>
 
       <div id="side">
