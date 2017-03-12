@@ -28,9 +28,9 @@ class App extends React.Component {
 
   // Controller Functions
   showCredits () {
-    alert('A Hack Reactor MVP project by Stephen Makowski.' +
-      'Technologies used: React, Express, MongoDB, and Node' +
-      '(...and some jQuery. I hope it isn\'t an anti-pattern ^-^) \n \n' +
+    alert('Stephen Makowskiの一つのHack ReactorのMVPプロジェクトです.' +
+      '使ったテック: React, Express, MongoDB, や Node' +
+      '(を使ったかどうか,  ^-^) \n \n' +
       'Big thanks to Everyone in HRSF72, expecially those who put up' +
       'with me during pair programming! Y\'all rule! Hope you enjoy' +
       'the game!')
@@ -110,10 +110,8 @@ class App extends React.Component {
   }
 
   endGame(cb) {
-    alert('Congratz ' + this.state.playerName + ', you typed ' + this.state.charCount + ' characters');
+    alert('おめでとうございます!' + this.state.playerName + 'さん!' + (this.state.charCount) + 'のキャラをタイプしはした！ ﾍ(=￣∇￣)ﾉ');
     //send the data to the data base
-
-    //grab data and rerender high score board
 
     $.ajax({
       method: 'POST',
@@ -131,6 +129,7 @@ class App extends React.Component {
 
     this.setState({charCount: 0})
     $('#gamestats').hide();
+    $('input').val('');
     $('input').hide();
     $('#side').show();
     this.clearTerminal();
@@ -155,7 +154,9 @@ class App extends React.Component {
   componentDidMount() {
     $('input').hide();
     $('#gamestats').hide();
-    this.changeName();
+    $('#terminalbody').append('こんにちは!楽しみのために\"ゲームをスタート\"のボタンを押してください' +
+      'ボタンを押すと10秒がなく前にINPUTボックスをクリックしてタイプをしてください'
+    );
     var getter = this.getData;
       
       setInterval(getter, 1000);
