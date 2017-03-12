@@ -75,9 +75,13 @@ class App extends React.Component {
 
   //Game Flow Functions
   playGame() {
-    var requester = this.getData;
+    var ender = this.endGame.bind(this);
+    var requester = this.getData.bind(this);
+
     this.setupGame();
-    this.runGame(this.endGame);
+    this.runGame(function() {
+      ender(requester);
+    });
   }
 
   setupGame() {
@@ -103,7 +107,7 @@ class App extends React.Component {
     var ticker = setInterval(runner, 1000);
   }
 
-  endGame() {
+  endGame(cb) {
     alert('Congratz ' + this.state.playerName + ', you typed ' + this.state.charCount + ' characters');
     //send the data to the data base
 
@@ -116,6 +120,7 @@ class App extends React.Component {
       contentType: 'application/json',
       success: (data) => {  
       console.log(data);
+      cb();
       },
       error: (err) => {
         console.log('ERR', err);
@@ -147,20 +152,12 @@ class App extends React.Component {
   componentDidMount() {
   $('p').hide();
   this.changeName();
+  var getter = this.getData;
     
-  // get highscores from db
-    $.ajax({
-      url: '/scores', 
-      success: (data) => {   
-      console.log('DATA RECEIVED', data);
-        this.setState({
-          scores: data
-        })
-      },
-      error: (err) => {
-        console.log('err', err);
-      }
-    });
+ 
+
+    setInterval(getter, 1000);
+
   }
 
   render () {
