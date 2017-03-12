@@ -18,15 +18,17 @@ class App extends React.Component {
       charCount: 0
     }
 
+    // bind everything to App
     this.changeName = this.changeName.bind(this);
     this.runGame = this.runGame.bind(this);
     this.setupGame = this.setupGame.bind(this);
     this.addToCharCount = this.addToCharCount.bind(this);
     this.playGame = this.playGame.bind(this);
     this.endGame = this.endGame.bind(this);
+    this.getData = this.getData.bind(this);
   }
 
-  // Control Functions
+  // Controller Functions
   showCredits () {
     alert('A Hack Reactor MVP project by Stephen Makowski.' +
       'Technologies used: React, Express, MongoDB, and Node' +
@@ -39,7 +41,7 @@ class App extends React.Component {
   changeName () {
     // set name on load
     var name = prompt('名前は...？ 名前がなければPlayerにします');
-    if (name === '') {
+    if (name === '' || !name) {
       name = 'PLAYER'
     } else {
       name = name.toUpperCase();
@@ -71,8 +73,9 @@ class App extends React.Component {
     $('#terminalbody').empty();
   }
 
-  //Game Flow
+  //Game Flow Functions
   playGame() {
+    var requester = this.getData;
     this.setupGame();
     this.runGame(this.endGame);
   }
@@ -112,7 +115,7 @@ class App extends React.Component {
       data: JSON.stringify({name: this.state.playerName, score: this.state.charCount}),
       contentType: 'application/json',
       success: (data) => {  
-      console.log('POSTING...', data);
+      console.log(data);
       },
       error: (err) => {
         console.log('ERR', err);
@@ -122,6 +125,22 @@ class App extends React.Component {
     this.setState({charCount: 0})
     $('p').hide();
     $('#board').show();
+  }
+
+  //Data Retrieval
+  getData () {
+    $.ajax({
+      url: '/scores', 
+      success: (data) => {   
+      console.log('DATA RECEIVED', data);
+        this.setState({
+          scores: data
+        })
+      },
+      error: (err) => {
+        console.log('err', err);
+      }
+    });
   }
 
 
