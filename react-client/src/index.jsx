@@ -69,6 +69,7 @@ class App extends React.Component {
 
   clearTerminal () {
     $('#terminalbody').empty();
+    $('terminalbody').append('ゲムスタートを待っています.')
   }
 
   //Game Flow Functions
@@ -83,7 +84,9 @@ class App extends React.Component {
   }
 
   setupGame() {
+
     $('#gamestats').show();
+    $('input').show();
     $('#side').hide();
     this.setState({charCount: 0});
     this.setState({timeLeft: 9});
@@ -128,7 +131,9 @@ class App extends React.Component {
 
     this.setState({charCount: 0})
     $('#gamestats').hide();
+    $('input').hide();
     $('#side').show();
+    this.clearTerminal();
   }
 
   //Data Retrieval
@@ -148,6 +153,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    $('input').hide();
     $('#gamestats').hide();
     this.changeName();
     var getter = this.getData;
