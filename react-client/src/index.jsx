@@ -30,10 +30,9 @@ class App extends React.Component {
   showCredits () {
     alert('Stephen Makowskiの一つのHack ReactorのMVPプロジェクトです.' +
       '使ったテック: React, Express, MongoDB, や Node' +
-      '(を使ったかどうか,  ^-^) \n \n' +
-      'Big thanks to Everyone in HRSF72, expecially those who put up' +
-      'with me during pair programming! Y\'all rule! Hope you enjoy' +
-      'the game!')
+      '(アンチパターンかどうか知りませんが,　jQueryも使った ^-^) \n \n' +
+      'HRSF72のみんなさんにありがとうございます, 特にペーア相棒にありがとう!' +
+      'みんなが最高です!あなたがそれを楽しんでくれたことを望んでいます.')
   }
 
   changeName () {
