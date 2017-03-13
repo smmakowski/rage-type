@@ -20,7 +20,8 @@ var Score = mongoose.model('Score', scoreSchema);
 
 //add new person
 var addOne = function(data, callback) {
-  console.log(data);
+  var comparison = Score.findOne(data);
+  console.log(comparison);
   var newScore = new Score(data);
   newScore.save(function(err, newScore) {
     if (err) {

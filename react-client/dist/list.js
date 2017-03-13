@@ -18,5 +18,8 @@ var lines = [
 	'/* Im a multiline comment */',
 	'/* What is the internet? */',
 	'arr.forEach(function(){ ',
-	'});'
+	'});',
+	'/* these are legitmate concerns /*',
+	'/* sick algorithm goes here! */'
+
 ]

@@ -27,7 +27,6 @@ app.get('/scores', function (req, res) {
 });
 
 app.post('/scores', function(req, res) {
-	console.log(req);
 	scores.addOne({name: req.body.name, score: req.body.score}, function(err, data) {
 		if(err) {
 			res.sendStatus();

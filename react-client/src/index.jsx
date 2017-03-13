@@ -39,7 +39,7 @@ class App extends React.Component {
   changeName () {
     // set name on load
     var name = prompt('名前は...？ 名前がなければPlayerにします');
-    if (name === '' || !name) {
+    if (name === '' || name === null) {
       name = 'PLAYER'
     } else {
       name = name.toUpperCase();
@@ -57,9 +57,14 @@ class App extends React.Component {
     var $input = $('input');
     this.setState({charCount: this.state.charCount + 5711});
 
-    var line = lines[Math.floor(Math.random() * lines.length)];
+    var line = lines[Math.floor(Math.random() * lines.length)] + ' ';
     var $termBody = $('#terminalbody');
-    $termBody.append(line);
+    $termBody.text($termBody.text() + line);
+
+    if ($termBody.text().length > 1040) {
+      $termBody.text($termBody.text().slice(line.length - 1));
+    }
+    
     
     if ($input.val().length > 50) {
       $input.val('');
@@ -69,22 +74,18 @@ class App extends React.Component {
 
   clearTerminal () {
     $('#terminalbody').empty();
-    $('terminalbody').append('ゲムスタートを待っています.')
   }
 
   //Game Flow Functions
   playGame() {
     var ender = this.endGame.bind(this);
-    var requester = this.getData.bind(this);
 
     this.setupGame();
-    this.runGame(function() {
-      ender(requester);
-    });
+    this.runGame(ender);
   }
 
   setupGame() {
-
+    this.clearTerminal();
     $('#gamestats').show();
     $('input').show();
     $('#side').hide();
@@ -109,7 +110,7 @@ class App extends React.Component {
     var ticker = setInterval(runner, 1000);
   }
 
-  endGame(cb) {
+  endGame() {
     alert('おめでとうございます!' + this.state.playerName + 'さん!' + (this.state.charCount) + 'のキャラをタイプしはした！ ﾍ(=￣∇￣)ﾉ');
     //send the data to the data base
 
@@ -120,7 +121,6 @@ class App extends React.Component {
       contentType: 'application/json',
       success: (data) => {  
       console.log(data);
-      cb();
       },
       error: (err) => {
         console.log('ERR', err);
@@ -152,10 +152,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    this.changeName();
     $('input').hide();
+    $('#board').hide();
     $('#gamestats').hide();
     $('#terminalbody').append('こんにちは!楽しみのために\"ゲームをスタート\"のボタンを押してください.' +
-      'ボタンを押すと10秒がなく前にINPUTボックスをクリックして早く何もしてタイプをしてください'
+      'ボタンを押すと10秒がなく前にINPUTボックスをクリックして早く何もしてタイプをしてください.'
     );
     var getter = this.getData;
       
