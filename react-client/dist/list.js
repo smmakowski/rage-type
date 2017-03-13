@@ -20,6 +20,23 @@ var lines = [
 	'arr.forEach(function(){ ',
 	'});',
 	'/* these are legitmate concerns /*',
-	'/* sick algorithm goes here! */'
-
+	'/* sick algorithm goes here! */',
+	'/* are the Usbs clean? */',
+	'str.concat(str.concat(\"another cat\")',
+	'arr.reduce(function(acc, item, i, arr) {',
+	'x += 2',
+	'while("true"){',
+	'null',
+	'undefined',
+	'$.ajax({',
+	'method: "GET"',
+	'contentType: JSON',
+	'/* EAT HALAL! */',
+	'var func2 = (x, y) => return x + y;',
+	'require("taco bell");',
+	'/* What are callbacks? */',
+	'const bestString = "BEARSTEAK";',
+	'arr.map(function()',
+	'obj[key] = 0;',
+	'if (obj[key] === undefined) {'
 ]

@@ -110,7 +110,7 @@ class App extends React.Component {
   }
 
   endGame() {
-    alert('おめでとうございます!' + this.state.playerName + 'さん!' + (this.state.charCount) + 'のキャラをタイプしはした！ ﾍ(=￣∇￣)ﾉ');
+    alert('おめでとうございます!' + this.state.playerName + 'さん! \n \n' + (this.state.charCount) + 'ポイントを集めました！ ﾍ(=￣∇￣)ﾉ');
     //send the data to the data base
 
     $.ajax({
