@@ -57,6 +57,7 @@ class App extends React.Component {
     this.setState({charCount: this.state.charCount + 5711});
 
     var line = lines[Math.floor(Math.random() * lines.length)] + ' ';
+    $input.val($input.val() + line);
     var $termBody = $('#terminalbody');
     $termBody.text($termBody.text() + line);
 
@@ -65,7 +66,7 @@ class App extends React.Component {
     }
     
     
-    if ($input.val().length > 50) {
+    if ($input.val().length > 70) {
       $input.val('');
     }
     
