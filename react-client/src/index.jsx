@@ -37,7 +37,7 @@ class App extends React.Component {
 
   changeName () {
     // set name on load
-    var name = prompt('Please enter your name! (Default name is "Player")');
+    var name = prompt('Please enter your name! (Default name is "PLAYER")');
     if (name === '' || name === null) {
       name = 'PLAYER'
     } else {
@@ -154,7 +154,6 @@ class App extends React.Component {
   componentDidMount() {
     this.changeName();
     $('input').hide();
-    $('#board').hide();
     $('#gamestats').hide();
     $('#terminalbody').append('Hello, and welcome to RAGE(●o≧д≦o)TYPE!' +
       'Click START to begin a game. You\'ll have 10 seconds to click on the INPUT BOX ' +
