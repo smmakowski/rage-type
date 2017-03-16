@@ -28,16 +28,16 @@ class App extends React.Component {
 
   // Controller Functions
   showCredits () {
-    alert('Stephen Makowskiの一つのHack ReactorのMVPプロジェクトです.' +
-      '使ったテック: React, Express, MongoDB, や Node' +
-      '(アンチパターンかどうか知りませんが,　jQueryも使った ^-^) \n \n' +
-      'HRSF72のみんなさんにありがとうございます, 特にペーア相棒にありがとう!' +
-      'みんなが最高です!あなたがそれを楽しんでくれたことを望んでいます.')
+    alert('A Hack Reactor MVP Project by Stephen Makowski.' +
+      'Technologies used: React, Express, MongoDB, and Node' +
+      ' \n \n' +
+      'Big thank you to everyone in Hack Reactor HRSF72! Ya\'ll rule' +
+      'Hope you enjoy the game!')
   }
 
   changeName () {
     // set name on load
-    var name = prompt('名前は...？ 名前がなければPlayerにします');
+    var name = prompt('Please enter your name! (Default name is "Player")');
     if (name === '' || name === null) {
       name = 'PLAYER'
     } else {
@@ -111,7 +111,7 @@ class App extends React.Component {
   }
 
   endGame() {
-    alert('おめでとうございます!' + this.state.playerName + 'さん! \n \n' + (this.state.charCount) + 'ポイントを集めました！ ﾍ(=￣∇￣)ﾉ');
+    alert('Great job' + this.state.playerName + '! \n \n You scored' + (this.state.charCount) + 'points！ ﾍ(=￣∇￣)ﾉ');
     //send the data to the data base
 
     $.ajax({
@@ -156,8 +156,10 @@ class App extends React.Component {
     $('input').hide();
     $('#board').hide();
     $('#gamestats').hide();
-    $('#terminalbody').append('こんにちは!楽しみのために\"ゲームをスタート\"のボタンを押してください.' +
-      'ボタンを押すと10秒がなく前にINPUTボックスをクリックして早く何もしてタイプをしてください.'
+    $('#terminalbody').append('Hello, and welcome to RAGE(●o≧д≦o)TYPE!' +
+      'Click START to begin a game. You\'ll have 10 seconds to click on the INPUT BOX ' +
+      'and type as much much and as fast as you can. It does not matter what you type, it ' +
+      'can be complete gibberish. Just button-mash your way to scoreboard!'
     );
     var getter = this.getData;
       
@@ -169,8 +171,8 @@ class App extends React.Component {
     return (<div>
       
       <header>
-        <h1>レージ(●o≧д≦o)タイプ!</h1>
-        <h3>よこそ, {this.state.playerName}! レージしよう!</h3>
+        <h1>RAGE(●o≧д≦o)TYPE!</h1>
+        <h3>Welcome, {this.state.playerName}! Let's Rage!</h3>
       </header>
 
       <div id="main">
@@ -179,9 +181,9 @@ class App extends React.Component {
 
       <div id="gamestats">
         
-        <p>{this.state.timeLeft}秒が残ります</p>
-        <p>{this.state.charCount} ポイント!</p>
-        <p id="playing">ゲム中です! 頑張って</p>
+        <p>{this.state.timeLeft} seconds remaining</p>
+        <p>{this.state.charCount} Points</p>
+        <p id="playing">Game in Progress! You can do it!</p>
       </div>
 
       <div id="side">
