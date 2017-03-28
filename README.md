@@ -15,3 +15,7 @@ I used Reactjs for the front end, because of it's dynamic rendering and the abil
 ### Back End
 
 I used express for my server, and mongodb for my database. Since my database only required one table and was non-relational, mongodb was the obvious choice. I used express to further simplify my server routing.
+
+### Deployment
+
+I intend to deploy this application on Heroku when I have some free time.
