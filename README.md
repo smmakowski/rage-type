@@ -1,6 +1,6 @@
 # RageType
 
-RageType is an game application I created for my MVP project at Hack Reactor. The MVP project is an open-ended two day solo project created from scratch. It is intended to be a quick, and mindless game, in the the sole purpose is to quickly relieve coding stress, while making it appear a distance that one is still doing work.
+RageType is an game application I created for my MVP project at Hack Reactor. The MVP project is an open-ended two day solo project created from scratch. It is intended to be a quick, and mindless game, in which the sole purpose is to quickly relieve coding stress, while making it appear a distance that one is still doing work.
 
 RageType is a button-mashing game where you have 10 seconds to type as much as you can in the fake in-game BASH terminal's input. It does not really matter what you type into the terminal, since what is displayed is fake minified jscript code (kind of like a simpler version of hacker-typer, which was one the inspirations for this game (http://hackertyper.com/). 
 
