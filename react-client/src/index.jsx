@@ -111,7 +111,7 @@ class App extends React.Component {
   }
 
   endGame() {
-    alert('Great job ' + this.state.playerName + '! \n \n You scored' + (this.state.charCount) + 'points！ ﾍ(=￣∇￣)ﾉ');
+    alert('Great job' + this.state.playerName + '! \n \n You scored' + (this.state.charCount) + 'points！ ﾍ(=￣∇￣)ﾉ');
     //send the data to the data base
 
     $.ajax({
@@ -162,8 +162,7 @@ class App extends React.Component {
     );
     var getter = this.getData;
       
-      setInterval(getter, 1000);
-
+    setInterval(getter, 1000);
   }
 
   render () {
