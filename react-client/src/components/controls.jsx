@@ -3,11 +3,11 @@ import React from 'react';
 
 const Controls = (props) => (
   <div id="controls">
-  	<h4>コントロール</h4>
-   	<button onClick={props.toggleScoreBoard}>スコアのトグル</button>
-    <button onClick={props.playGame}>ゲームをスタート</button>
-    <button onClick={props.changeName}>名前を変える</button>
-    <button onClick={props.showCredits}>クレジット</button>
+  	<h4>Controls</h4>
+   	<button onClick={props.toggleScoreBoard}>Toggle Scoreboard</button>
+    <button onClick={props.playGame}>Start Game</button>
+    <button onClick={props.changeName}>Change Name</button>
+    <button onClick={props.showCredits}>Credits</button>
 
   </div>
 )

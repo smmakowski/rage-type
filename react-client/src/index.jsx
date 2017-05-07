@@ -111,7 +111,7 @@ class App extends React.Component {
   }
 
   endGame() {
-    alert('Great job' + this.state.playerName + '! \n \n You scored' + (this.state.charCount) + 'points！ ﾍ(=￣∇￣)ﾉ');
+    alert('Great job ' + this.state.playerName + '! \n \n You scored' + (this.state.charCount) + 'points！ ﾍ(=￣∇￣)ﾉ');
     //send the data to the data base
 
     $.ajax({
@@ -156,7 +156,7 @@ class App extends React.Component {
     $('input').hide();
     $('#gamestats').hide();
     $('#terminalbody').append('Hello, and welcome to RAGE(●o≧д≦o)TYPE!' +
-      'Click  the <START> button to begin a game. You\'ll have 10 seconds to click on the INPUT BOX ' +
+      'Click the START button to begin a game. You\'ll have 10 seconds to click on the INPUT BOX ' +
       'and type as much much and as fast as you can. It does not matter what you type, it ' +
       'can be complete gibberish. Just button-mash your way to score board!'
     );
